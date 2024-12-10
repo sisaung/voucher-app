@@ -29,6 +29,7 @@ const LoginForm = () => {
         setToken(data.token);
         setUser(JSON.stringify(data.user));
         toast.success("Welcome,Login Successfully");
+        navigate("/dashboard");
       },
       onError: () => {
         toast.error(error?.message ?? "An unknown error occurred");
@@ -40,11 +41,11 @@ const LoginForm = () => {
 
   return (
     <Container>
-      <div className="flex flex-col justify-center items-center w-full h-screen">
+      <div className="flex flex-col items-center justify-center w-full h-screen">
         <h1 className="mb-5 text-2xl font-bold"> Please Login Your Account </h1>
         <form
           onSubmit={handleSubmit(handleLogin)}
-          className="border w-1/3 border-gray-200 shadow-sm rounded-lg px-6 py-8 space-y-4"
+          className="w-1/3 px-6 py-8 space-y-4 border border-gray-200 rounded-lg shadow-sm"
         >
           <TextInput
             type="email"
@@ -65,7 +66,7 @@ const LoginForm = () => {
             <p className="text-gray-500"> Don't have an account ? </p>
             <Link
               to="/register"
-              className="hover:text-blue-600 text-blue-500 underline"
+              className="text-blue-500 underline hover:text-blue-600"
             >
               Register
             </Link>
@@ -75,7 +76,7 @@ const LoginForm = () => {
             size="lg"
             type="submit"
             disabled={isPending}
-            className="disabled:pointer-events-none disabled:opacity-75 inline-flex gap-2 items-center"
+            className="inline-flex items-center gap-2 disabled:pointer-events-none disabled:opacity-75"
           >
             {isPending && <LoadingSpinner />}
             Login
