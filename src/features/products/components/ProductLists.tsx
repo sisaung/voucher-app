@@ -61,7 +61,9 @@ const ProductLists = () => {
         </table>
       </div>
 
-      {data?.meta && <Pagination meta={data?.meta} links={data?.links} />}
+      {data?.meta && data?.data.length !== 0 && (
+        <Pagination meta={data?.meta} links={data?.links} />
+      )}
     </div>
   );
 };

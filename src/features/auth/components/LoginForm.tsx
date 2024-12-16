@@ -9,6 +9,7 @@ import TextInput from "../../../components/TextInput";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import useCookie from "react-use-cookie";
+import RouteGuard from "./RouteGuard";
 const LoginForm = () => {
   const {
     control,
@@ -40,50 +41,55 @@ const LoginForm = () => {
   };
 
   return (
-    <Container>
-      <div className="flex flex-col items-center justify-center w-full h-screen">
-        <h1 className="mb-5 text-2xl font-bold"> Please Login Your Account </h1>
-        <form
-          onSubmit={handleSubmit(handleLogin)}
-          className="w-1/3 px-6 py-8 space-y-4 border border-gray-200 rounded-lg shadow-sm"
-        >
-          <TextInput
-            type="email"
-            label="Email"
-            name="email"
-            control={control}
-            placeholder="Enter your email"
-          />
-
-          <TextInput
-            type="password"
-            label="Password"
-            name="password"
-            control={control}
-          />
-
-          <div className="flex gap-4 ">
-            <p className="text-gray-500"> Don't have an account ? </p>
-            <Link
-              to="/register"
-              className="text-blue-500 underline hover:text-blue-600"
-            >
-              Register
-            </Link>
-          </div>
-          <Button
-            variant="primary"
-            size="lg"
-            type="submit"
-            disabled={isPending}
-            className="inline-flex items-center gap-2 disabled:pointer-events-none disabled:opacity-75"
+    <RouteGuard >
+      <Container>
+        <div className="flex flex-col items-center justify-center w-full h-screen">
+          <h1 className="mb-5 text-2xl font-bold">Please Login Your Account</h1>
+          <form
+            onSubmit={handleSubmit(handleLogin)}
+            className="w-1/3 px-6 py-8 space-y-4 border border-gray-200 rounded-lg shadow-sm"
           >
-            {isPending && <LoadingSpinner />}
-            Login
-          </Button>
-        </form>
-      </div>
-    </Container>
+            <TextInput
+              type="email"
+              label="Email"
+              name="email"
+              control={control}
+              placeholder="Enter your email"
+              disabled={isPending}
+            />
+
+            <TextInput
+              type="password"
+              label="Password"
+              name="password"
+              control={control}
+              disabled={isPending}
+
+            />
+
+            <div className="flex gap-4 ">
+              <p className="text-gray-500"> Don't have an account ? </p>
+              <Link
+                to="/register"
+                className="text-blue-500 underline hover:text-blue-600"
+              >
+                Register
+              </Link>
+            </div>
+            <Button
+              variant="primary"
+              size="lg"
+              type="submit"
+              disabled={isPending}
+              className="inline-flex items-center gap-2 disabled:pointer-events-none disabled:opacity-75"
+            >
+              {isPending && <LoadingSpinner />}
+              Login
+            </Button>
+          </form>
+        </div>
+      </Container>
+    </RouteGuard>
   );
 };
 
