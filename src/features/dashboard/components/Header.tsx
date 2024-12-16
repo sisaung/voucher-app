@@ -34,6 +34,7 @@ const Header = () => {
           <LuMenu className="size-5" />
         )}
       </motion.button>
+      
     </div>
   );
 };

@@ -6,8 +6,15 @@ import {
 } from "react-icons/lu";
 import { NavLink } from "react-router-dom";
 import { motion } from "motion/react";
+import { useShallow } from "zustand/shallow";
+import useToggleSideNav from "../../../stores/useToggleSideNav";
+import { AnimatePresence } from "motion/react";
 
 const SideNavigation = () => {
+  const { isOpen } = useToggleSideNav(
+    useShallow((state) => ({ isOpen: state.isOpen }))
+  );
+
   const module = [
     {
       name: "Dashboard",
@@ -32,40 +39,46 @@ const SideNavigation = () => {
   ];
 
   return (
-    <motion.div
-      initial={{ x: -300 }}
-      animate={{ x: 0 }}
-      exit={{ x: -300 }}
-      className="fixed top-0 left-0 h-full z-20"
-    >
-      <div className={`w-64 h-screen p-4 bg-white border-r shadow-sm  `}>
-        <motion.div
-          initial={{ x: -300 }}
-          animate={{ x: 0 }}
-          exit={{ x: -300 }}
-          transition={{ type: "spring", duration: 0.5, damping: 20 }}
-        >
-          <h1 className="mb-10 text-xl font-bold"> Voucher App </h1>
-        </motion.div>
-        <div className="space-y-4">
-          {module.map((item, index) => (
-            <ul key={index}>
-              <NavLink
-                to={item.path}
-                style={({ isActive }) => ({
-                  color: isActive ? "#2563eb" : "#4b5563",
-                  backgroundColor: isActive ? "#eff6ff " : "",
-                })}
-                className="flex items-center gap-3 px-5 py-2.5 rounded-lg"
+    <>
+      {isOpen && (
+        <AnimatePresence mode="wait">
+          <motion.div
+            initial={{ x: -300 }}
+            animate={{ x: 0 }}
+            exit={{ x: -300 }}
+            className="fixed top-0 left-0 h-full z-20"
+          >
+            <div className={`w-64 h-screen p-4 bg-white border-r shadow-sm  `}>
+              <motion.div
+                initial={{ x: -300 }}
+                animate={{ x: 0 }}
+                exit={{ x: -300 }}
+                transition={{ type: "spring", duration: 0.5, damping: 20 }}
               >
-                <li> {item.icon} </li>
-                <li> {item.name} </li>
-              </NavLink>
-            </ul>
-          ))}
-        </div>
-      </div>
-    </motion.div>
+                <h1 className="mb-10 text-xl font-bold"> Voucher App </h1>
+              </motion.div>
+              <div className="space-y-4">
+                {module.map((item, index) => (
+                  <ul key={index}>
+                    <NavLink
+                      to={item.path}
+                      style={({ isActive }) => ({
+                        color: isActive ? "#2563eb" : "#4b5563",
+                        backgroundColor: isActive ? "#eff6ff " : "",
+                      })}
+                      className="flex items-center gap-3 px-5 py-2.5 rounded-lg"
+                    >
+                      <li> {item.icon} </li>
+                      <li> {item.name} </li>
+                    </NavLink>
+                  </ul>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      )}
+    </>
   );
 };
 
