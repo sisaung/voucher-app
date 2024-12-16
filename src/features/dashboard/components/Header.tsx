@@ -1,7 +1,7 @@
 import { LuArrowLeft, LuMenu } from "react-icons/lu";
 import useToggleSideNav from "../../../stores/useToggleSideNav";
 import { useShallow } from "zustand/shallow";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import Logout from "../../../components/Logout";
 
 const Header = () => {
@@ -36,6 +36,21 @@ const Header = () => {
             <LuMenu className="size-5" />
           )}
         </motion.button>
+        {!isOpen && (
+          <AnimatePresence mode="wait">
+            <motion.div
+              initial={{ x: 300 }}
+              animate={{ x: 0 }}
+              exit={{ x: 300 }}
+              transition={{ type: "spring", duration: 0.5, damping: 20 }}
+            >
+              <h1 className="text-xl md:text-2xl font-bold">
+               
+                Voucher App
+              </h1>
+            </motion.div>
+          </AnimatePresence>
+        )}
         <Logout />
       </div>
     </div>

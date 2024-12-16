@@ -5,7 +5,7 @@ import {
   LuPackage,
 } from "react-icons/lu";
 import { NavLink } from "react-router-dom";
-import { motion } from "motion/react";
+import { color, motion } from "motion/react";
 import { useShallow } from "zustand/shallow";
 import useToggleSideNav from "../../../stores/useToggleSideNav";
 import { AnimatePresence } from "motion/react";
@@ -57,23 +57,30 @@ const SideNavigation = () => {
               >
                 <h1 className="mb-10 text-xl font-bold"> Voucher App </h1>
               </motion.div>
-              <div className="space-y-4">
+
+              <ul className="space-y-4">
                 {module.map((item, index) => (
-                  <ul key={index}>
+                  <li key={index}>
                     <NavLink
                       to={item.path}
-                      style={({ isActive }) => ({
-                        color: isActive ? "#2563eb" : "#4b5563",
-                        backgroundColor: isActive ? "#eff6ff " : "",
-                      })}
-                      className="flex items-center gap-3 px-5 py-2.5 rounded-lg"
+                      className=""
+                      end={item.path === "/dashboard"}
                     >
-                      <li> {item.icon} </li>
-                      <li> {item.name} </li>
+                      {({ isActive }) => (
+                        <span
+                          className={`flex items-center gap-3 px-5 py-2.5 rounded-lg  duration-300 ${
+                            isActive
+                              ? "bg-gray-100 text-blue-500 hover:text-blue-600 hover:bg-blue-100"
+                              : "text-gray-600 hover:bg-gray-100 hover:text-blue-500"
+                          } `}
+                        >
+                          {item.icon} {item.name}
+                        </span>
+                      )}
                     </NavLink>
-                  </ul>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </motion.div>
         </AnimatePresence>
