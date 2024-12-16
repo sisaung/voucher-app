@@ -13,6 +13,9 @@ const axiosInstance = axios.create({
   },
 });
 
+console.log(getCookie("my_token"));
+
+
 axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${getCookie(
   "my_token"
 )}`;
