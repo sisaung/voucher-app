@@ -55,6 +55,7 @@ const LoginForm = () => {
               name="email"
               control={control}
               placeholder="Enter your email"
+              disabled={isPending}
             />
 
             <TextInput
@@ -62,6 +63,8 @@ const LoginForm = () => {
               label="Password"
               name="password"
               control={control}
+              disabled={isPending}
+
             />
 
             <div className="flex gap-4 ">

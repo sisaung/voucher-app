@@ -49,6 +49,7 @@ const RegisterForm = () => {
               label="Name"
               control={control}
               placeholder="Enter your name"
+              disabled={isPending}
             />
             <TextInput
               type="email"
@@ -56,12 +57,14 @@ const RegisterForm = () => {
               label="Email"
               control={control}
               placeholder="Enter your Email"
+              disabled={isPending}
             />
             <TextInput
               type="password"
               name="password"
               label="Password"
               control={control}
+              disabled={isPending}
             />
 
             <TextInput
@@ -69,6 +72,7 @@ const RegisterForm = () => {
               name="password_confirmation"
               label="Confirm Password"
               control={control}
+              disabled={isPending}
             />
             <div className="flex gap-4 ">
               <p className="text-gray-500"> Already have an account ? </p>
