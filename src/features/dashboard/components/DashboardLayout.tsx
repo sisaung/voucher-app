@@ -1,29 +1,20 @@
-import { Outlet } from "react-router-dom";
 import SideNavigation from "./SideNavigation";
-import Header from "./Header";
-import useToggleSideNav from "../../../stores/useToggleSideNav";
-import { useShallow } from "zustand/shallow";
-import { AnimatePresence } from "motion/react";
+
+import { Toaster } from "react-hot-toast";
+import { useRef } from "react";
+import HeaderOutletLayout from "./HeaderOutletLayout";
+import Modal from "../../products/components/ProductDeletConfirmation";
 
 const DashboardLayout = () => {
-  const { isOpen } = useToggleSideNav(
-    useShallow((state) => ({ isOpen: state.isOpen }))
-  );
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="flex w-full ">
-      <AnimatePresence mode="wait">
-        {isOpen && <SideNavigation />}
-      </AnimatePresence>
+    <div className="flex w-full " ref={scrollContainerRef}>
+      <Toaster position="top-right" reverseOrder={false} />
 
-      <div
-        className={`w-full h-screen overflow-auto ${
-          isOpen ? "ml-64" : ""
-        } duration-300 transition-all `}
-      >
-        <Header />
-        <Outlet />
-      </div>
+      <SideNavigation />
+      <Modal />
+      <HeaderOutletLayout />
     </div>
   );
 };

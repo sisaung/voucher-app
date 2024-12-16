@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
-import { createAuth } from "../../../services/api";
+import { storeAuth } from "../../../services/api";
 
 const useAuth = (endPoint: string) => {
   return useMutation({
-    mutationFn: (data: any) => createAuth(endPoint, data),
+    mutationFn: (data: any) => storeAuth(endPoint, data),
   });
 };
 export default useAuth;
