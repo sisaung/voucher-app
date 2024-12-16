@@ -12,8 +12,8 @@ const productRoute = [
     element: <CreateProductPage />,
   },
   {
-    path:"products/edit/:id",
-    element:<EditProductPage />
-  }
+    path: "products/edit/:id",
+    element: <EditProductPage />,
+  },
 ];
 export default productRoute;
