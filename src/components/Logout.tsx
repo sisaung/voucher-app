@@ -15,8 +15,8 @@ const Logout = () => {
   return (
     <Button
       onClick={handleLogout}
-      variant="destructive"
-      className=" text-sm py-2 px-3 inline-flex items-center gap-2"
+      variant="outline"
+      className="hover:bg-red-100 hover:text-red-500 duration-300 text-sm py-2 px-3 inline-flex items-center gap-2"
     >
       <LuLogOut />
       Logout

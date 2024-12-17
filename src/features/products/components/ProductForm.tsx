@@ -70,7 +70,7 @@ const ProductForm = ({
           disabled={isPending}
         >
           {isPending && <LoadingSpinner />}
-          {defaultValue ? "Update" : "Create"  }
+          {defaultValue ? "Update" : "Create"}
         </Button>
       </div>
     </form>
