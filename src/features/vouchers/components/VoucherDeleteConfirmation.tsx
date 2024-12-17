@@ -1,51 +1,14 @@
-import { useShallow } from "zustand/shallow";
-import useModalStore from "../../../stores/useModalStore";
 import { LuTriangleAlert } from "react-icons/lu";
-import useMutatedIdStore from "../../../stores/useMutatedIdStore";
 import { motion } from "motion/react";
-import { useEffect } from "react";
-import useDestroyVoucher from "../hooks/useDestroyVoucher";
+import useModalVoucher from "../hooks/useModalVoucher";
 
 const VoucherDeleteConfirmation = () => {
-  const { mutate } = useDestroyVoucher("vouchers");
-  const { openVoucherDeletedModal, setOpenVoucherDeletedModal } = useModalStore(
-    useShallow((state) => ({
-      openVoucherDeletedModal: state.openVoucherDeletedModal,
-      setOpenVoucherDeletedModal: state.setOpenVoucherDeletedModal,
-    }))
-  );
-
-  const { deletedVoucherId } = useMutatedIdStore(
-    useShallow((state) => ({ deletedVoucherId: state.deletedVoucherId }))
-  );
-
-  const handleDeleteBtn = () => {
-    mutate(deletedVoucherId ?? 0);
-    setOpenVoucherDeletedModal(false);
-  };
-
-  const handleCancelBtn = () => {
-    setOpenVoucherDeletedModal(false);
-  };
-
-  const handleOverLay = () => {
-    setOpenVoucherDeletedModal(false);
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setOpenVoucherDeletedModal(false);
-      }
-    };
-
-    if (openVoucherDeletedModal) {
-      document.addEventListener("keydown", handleKeyDown);
-
-      return () => document.removeEventListener("keydown", handleKeyDown);
-    }
-  }, [openVoucherDeletedModal]);
-
+  const {
+    openVoucherDeletedModal,
+    handleCancelBtn,
+    handleDeleteBtn,
+    handleOverLay,
+  } = useModalVoucher();
   return (
     <>
       {openVoucherDeletedModal && (

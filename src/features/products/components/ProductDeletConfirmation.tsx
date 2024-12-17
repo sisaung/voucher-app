@@ -1,50 +1,14 @@
-import { useShallow } from "zustand/shallow";
-import useModalStore from "../../../stores/useModalStore";
 import { LuTriangleAlert } from "react-icons/lu";
-import useDestroyProduct from "../hooks/useDestroyProduct";
-import useMutatedIdStore from "../../../stores/useMutatedIdStore";
 import { motion } from "motion/react";
-import { useEffect } from "react";
+import useModalProduct from "../hooks/useModalProduct";
 
 const ProductDeletConfirmation = () => {
-  const { mutate } = useDestroyProduct("products");
-  const { openProductDeletedModal, setOpenProductDeletedModal } = useModalStore(
-    useShallow((state) => ({
-      openProductDeletedModal: state.openProductDeletedModal,
-      setOpenProductDeletedModal: state.setOpenProductDeletedModal,
-    }))
-  );
-
-  const { deletedProductId } = useMutatedIdStore(
-    useShallow((state) => ({ deletedProductId: state.deletedProductId }))
-  );
-
-  const handleDeleteBtn = () => {
-    mutate(deletedProductId ?? 0);
-    setOpenProductDeletedModal(false);
-  };
-
-  const handleCancelBtn = () => {
-    setOpenProductDeletedModal(false);
-  };
-
-  const handleOverLay = () => {
-    setOpenProductDeletedModal(false);
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setOpenProductDeletedModal(false);
-      }
-    };
-
-    if (openProductDeletedModal) {
-      document.addEventListener("keydown", handleKeyDown);
-
-      return () => document.removeEventListener("keydown", handleKeyDown);
-    }
-  }, [openProductDeletedModal]);
+  const {
+    openProductDeletedModal,
+    handleDeleteBtn,
+    handleCancelBtn,
+    handleOverLay,
+  } = useModalProduct();
 
   return (
     <>
