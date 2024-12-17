@@ -1,4 +1,4 @@
-import { LuChevronRight } from "react-icons/lu";
+import { LuChevronRight, LuHouse } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
 type BreadcrumbProps = {
@@ -10,7 +10,11 @@ const Breadcrumb = ({ currentTitle, links }: BreadcrumbProps) => {
   return (
     <section>
       <div className={`flex max-[320px]:text-xs gap-1 sm:gap-3 items-center `}>
-        <Link to="/dashboard" className=" text-gray-400">
+        <Link
+          to="/dashboard"
+          className=" text-gray-400 inline-flex items-center gap-2 "
+        >
+          <LuHouse />
           Dashboard
         </Link>
         <LuChevronRight />

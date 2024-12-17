@@ -16,7 +16,7 @@ const TotalDashboardItemsList = () => {
       color: "bg-green-500 ",
     },
     {
-      title: "Total Invoices",
+      title: "Total Vouchers",
       value: "40",
       icon: <LuFileText className=" text-white size-6" />,
       color: "bg-purple-500 ",

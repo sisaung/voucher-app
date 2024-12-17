@@ -1,54 +1,54 @@
 import { useShallow } from "zustand/shallow";
 import useModalStore from "../../../stores/useModalStore";
 import { LuTriangleAlert } from "react-icons/lu";
-import useDestroyProduct from "../hooks/useDestroyProduct";
 import useMutatedIdStore from "../../../stores/useMutatedIdStore";
 import { motion } from "motion/react";
 import { useEffect } from "react";
+import useDestroyVoucher from "../hooks/useDestroyVoucher";
 
-const ProductDeletConfirmation = () => {
-  const { mutate } = useDestroyProduct("products");
-  const { openProductDeletedModal, setOpenProductDeletedModal } = useModalStore(
+const VoucherDeleteConfirmation = () => {
+  const { mutate } = useDestroyVoucher("vouchers");
+  const { openVoucherDeletedModal, setOpenVoucherDeletedModal } = useModalStore(
     useShallow((state) => ({
-      openProductDeletedModal: state.openProductDeletedModal,
-      setOpenProductDeletedModal: state.setOpenProductDeletedModal,
+      openVoucherDeletedModal: state.openVoucherDeletedModal,
+      setOpenVoucherDeletedModal: state.setOpenVoucherDeletedModal,
     }))
   );
 
-  const { deletedProductId } = useMutatedIdStore(
-    useShallow((state) => ({ deletedProductId: state.deletedProductId }))
+  const { deletedVoucherId } = useMutatedIdStore(
+    useShallow((state) => ({ deletedVoucherId: state.deletedVoucherId }))
   );
 
   const handleDeleteBtn = () => {
-    mutate(deletedProductId ?? 0);
-    setOpenProductDeletedModal(false);
+    mutate(deletedVoucherId ?? 0);
+    setOpenVoucherDeletedModal(false);
   };
 
   const handleCancelBtn = () => {
-    setOpenProductDeletedModal(false);
+    setOpenVoucherDeletedModal(false);
   };
 
   const handleOverLay = () => {
-    setOpenProductDeletedModal(false);
+    setOpenVoucherDeletedModal(false);
   };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setOpenProductDeletedModal(false);
+        setOpenVoucherDeletedModal(false);
       }
     };
 
-    if (openProductDeletedModal) {
+    if (openVoucherDeletedModal) {
       document.addEventListener("keydown", handleKeyDown);
 
       return () => document.removeEventListener("keydown", handleKeyDown);
     }
-  }, [openProductDeletedModal]);
+  }, [openVoucherDeletedModal]);
 
   return (
     <>
-      {openProductDeletedModal && (
+      {openVoucherDeletedModal && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ const ProductDeletConfirmation = () => {
               <div className="flex justify-center items-center size-10 rounded-full bg-red-100">
                 <LuTriangleAlert className="text-red-500" />
               </div>
-              <h2 className="text-lg font-medium ">Delete Product</h2>
+              <h2 className="text-lg font-medium ">Delete Voucher</h2>
             </div>
             <p className="mb-6 text-sm text-gray-500">
               Are you sure you want to delete this item? This action cannot be
@@ -88,4 +88,4 @@ const ProductDeletConfirmation = () => {
   );
 };
 
-export default ProductDeletConfirmation;
+export default VoucherDeleteConfirmation;

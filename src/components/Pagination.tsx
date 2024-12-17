@@ -1,13 +1,13 @@
 import { LuChevronDown, LuChevronLeft, LuChevronRight } from "react-icons/lu";
-import { MetaLinks, MetaProduct } from "../types/product";
 import { useSearchParams } from "react-router-dom";
 import { ChangeEvent, Fragment, useCallback } from "react";
 import urlToParamObj from "../utils/urlToParamObj";
 import useVisiblePageNumbers from "../hooks/useVisiblePageNumber";
+import { Meta, Links } from "../types/product";
 
 type PaginationProps = {
-  meta: MetaProduct;
-  links: MetaLinks;
+  meta: Meta;
+  links: Links;
 };
 
 const Pagination = ({
@@ -43,7 +43,6 @@ const Pagination = ({
     [from, to]
   );
 
- 
   const specificPages = useVisiblePageNumbers(current_page, last_page);
 
   const handleRowsPerPage = (e: ChangeEvent<HTMLSelectElement>) => {

@@ -2,7 +2,6 @@ import { LuArrowLeft, LuMenu } from "react-icons/lu";
 import useToggleSideNav from "../../../stores/useToggleSideNav";
 import { useShallow } from "zustand/shallow";
 import { AnimatePresence, motion } from "motion/react";
-import Logout from "../../../components/Logout";
 
 const Header = () => {
   const { isOpen, setIsOpen } = useToggleSideNav(
@@ -18,7 +17,7 @@ const Header = () => {
 
   return (
     <div className="px-5 py-5 bg-white border-b shadow-sm">
-      <div className="flex justify-between items-center">
+      <div className="flex items-center ">
         <motion.button
           onClick={handleToggleSideNav}
           initial={{ rotate: 0 }}
@@ -43,15 +42,12 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: 300 }}
               transition={{ type: "spring", duration: 0.5, damping: 20 }}
+              className="flex justify-center items-center w-full"
             >
-              <h1 className="text-xl md:text-2xl font-bold">
-               
-                Voucher App
-              </h1>
+              <h1 className="text-xl md:text-2xl font-bold">Voucher App</h1>
             </motion.div>
           </AnimatePresence>
         )}
-        <Logout />
       </div>
     </div>
   );

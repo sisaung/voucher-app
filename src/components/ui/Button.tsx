@@ -34,7 +34,8 @@ const buttonVariants = cva("rounded", {
       primary: "bg-blue-500 hover:bg-blue-700 text-white ",
       secondary: "bg-cyan-500 hover:bg-cyan-700 text-white ",
       destructive: "bg-red-500 hover:bg-red-600 text-white ",
-      outline: "text-gray-500 hover:bg-blue-500 hover:text-white ",
+      outline:
+        "border border-gray-200 text-gray-500 hover:bg-blue-500 hover:text-white ",
     },
     size: {
       sm: "text-sm px-2 py-1",

@@ -8,6 +8,8 @@ import useCookie from "react-use-cookie";
 import { Navigate } from "react-router-dom";
 import useTokenStore from "../../../stores/useTokenStore";
 import { useShallow } from "zustand/shallow";
+import VoucherDeleteConfirmation from "../../vouchers/components/VoucherDeleteConfirmation";
+import ChooseInvoiceDownloadType from "../../vouchers/components/ChooseInvoiceDownloadType";
 
 const DashboardLayout = () => {
   const [token, setToken] = useCookie("my_token");
@@ -31,6 +33,8 @@ const DashboardLayout = () => {
 
       <SideNavigation />
       <ProductDeleteConfirmation />
+      <VoucherDeleteConfirmation />
+      <ChooseInvoiceDownloadType />
       <HeaderOutletLayout />
     </div>
   );
