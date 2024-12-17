@@ -7,3 +7,15 @@
 body {
   @apply bg-gray-50;
 }
+.avatar {
+  @apply text-sm;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}

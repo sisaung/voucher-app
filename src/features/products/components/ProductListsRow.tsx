@@ -3,21 +3,22 @@ import { Product } from "../../../types/product";
 import { Menu, MenuItem } from "@szhsin/react-menu";
 import { LuEllipsis, LuPencil, LuTrash2 } from "react-icons/lu";
 import { formatDate, formatTime } from "../../../utils/formatDateTime";
-import useDestroyProduct from "../hooks/useDestroyProduct";
+
 import { useNavigate } from "react-router-dom";
 import "@szhsin/react-menu/dist/index.css";
 import "@szhsin/react-menu/dist/transitions/zoom.css";
 import useModalStore from "../../../stores/useModalStore";
 import { useShallow } from "zustand/shallow";
-import Modal from "./ProductDeletConfirmation";
+
 import useMutatedIdStore from "../../../stores/useMutatedIdStore";
 type ProductListsRowProps = {
   product: Product;
 };
 const ProductListsRow = ({ product }: ProductListsRowProps) => {
-  const { mutate } = useDestroyProduct("products");
-  const { setOpenDeletedModal } = useModalStore(
-    useShallow((state) => ({ setOpenDeletedModal: state.setOpenDeletedModal }))
+  const { setOpenProductDeletedModal } = useModalStore(
+    useShallow((state) => ({
+      setOpenProductDeletedModal: state.setOpenProductDeletedModal,
+    }))
   );
 
   const { setDeletedProductId } = useMutatedIdStore(
@@ -27,7 +28,7 @@ const ProductListsRow = ({ product }: ProductListsRowProps) => {
   const navigate = useNavigate();
 
   const handleDeleteProduct = () => {
-    setOpenDeletedModal(true);
+    setOpenProductDeletedModal(true);
     setDeletedProductId(product.id ?? 0);
     // mutate(product.id);
   };

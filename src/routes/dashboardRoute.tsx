@@ -1,6 +1,7 @@
 import DashboardLayout from "../features/dashboard/components/DashboardLayout";
 import DashboardPage from "../features/dashboard/pages/DashboardPage";
 import productRoute from "./productRoute";
+import voucherRoute from "./voucherRoute";
 
 const dashboardRoute = [
   {
@@ -12,6 +13,7 @@ const dashboardRoute = [
         element: <DashboardPage />,
       },
       ...productRoute,
+      ...voucherRoute,
     ],
   },
 ];

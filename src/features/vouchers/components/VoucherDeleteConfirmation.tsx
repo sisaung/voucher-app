@@ -1,18 +1,17 @@
 import { LuTriangleAlert } from "react-icons/lu";
 import { motion } from "motion/react";
-import useModalProduct from "../hooks/useModalProduct";
+import useModalVoucher from "../hooks/useModalVoucher";
 
-const ProductDeletConfirmation = () => {
+const VoucherDeleteConfirmation = () => {
   const {
-    openProductDeletedModal,
-    handleDeleteBtn,
+    openVoucherDeletedModal,
     handleCancelBtn,
+    handleDeleteBtn,
     handleOverLay,
-  } = useModalProduct();
-
+  } = useModalVoucher();
   return (
     <>
-      {openProductDeletedModal && (
+      {openVoucherDeletedModal && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -25,7 +24,7 @@ const ProductDeletConfirmation = () => {
               <div className="flex justify-center items-center size-10 rounded-full bg-red-100">
                 <LuTriangleAlert className="text-red-500" />
               </div>
-              <h2 className="text-lg font-medium ">Delete Product</h2>
+              <h2 className="text-lg font-medium ">Delete Voucher</h2>
             </div>
             <p className="mb-6 text-sm text-gray-500">
               Are you sure you want to delete this item? This action cannot be
@@ -52,4 +51,4 @@ const ProductDeletConfirmation = () => {
   );
 };
 
-export default ProductDeletConfirmation;
+export default VoucherDeleteConfirmation;

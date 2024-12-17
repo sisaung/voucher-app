@@ -9,6 +9,7 @@ import { color, motion } from "motion/react";
 import { useShallow } from "zustand/shallow";
 import useToggleSideNav from "../../../stores/useToggleSideNav";
 import { AnimatePresence } from "motion/react";
+import Logout from "../../../components/Logout";
 
 const SideNavigation = () => {
   const { isOpen } = useToggleSideNav(
@@ -32,8 +33,8 @@ const SideNavigation = () => {
       icon: <LuCircleDollarSign className="size-5" />,
     },
     {
-      name: "Invoices",
-      path: "/dashboard/invoices",
+      name: "Vouchers",
+      path: "/dashboard/vouchers",
       icon: <LuFileText className="size-5" />,
     },
   ];
@@ -48,7 +49,9 @@ const SideNavigation = () => {
             exit={{ x: -300 }}
             className="fixed top-0 left-0 h-full z-20"
           >
-            <div className={`w-64 h-screen p-4 bg-white border-r shadow-sm  `}>
+            <div
+              className={`flex flex-col w-64 h-screen p-4 bg-white border-r shadow-sm  `}
+            >
               <motion.div
                 initial={{ x: -300 }}
                 animate={{ x: 0 }}
@@ -81,6 +84,9 @@ const SideNavigation = () => {
                   </li>
                 ))}
               </ul>
+              <div className="mt-auto">
+                <Logout />
+              </div>
             </div>
           </motion.div>
         </AnimatePresence>

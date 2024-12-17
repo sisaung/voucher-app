@@ -8,7 +8,7 @@ export type Product = {
   updated_at: string;
 };
 
-export type MetaProduct = {
+export type Meta = {
   current_page: number;
   from: number;
   last_page: number;
@@ -16,15 +16,15 @@ export type MetaProduct = {
   total: number;
 };
 
-export type MetaLinks = {
+export type Links = {
   next: string;
   prev: string;
 };
 
 export type Products = {
   data: Product[];
-  meta: MetaProduct;
-  links: MetaLinks;
+  meta: Meta;
+  links: Links;
 };
 
 export type ShowProduct = {

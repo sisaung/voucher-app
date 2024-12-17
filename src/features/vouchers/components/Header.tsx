@@ -1,11 +1,8 @@
-import { LuPlus, LuSearch, LuX } from "react-icons/lu";
+import { LuMonitor, LuSearch, LuX } from "react-icons/lu";
 import Button from "../../../components/ui/Button";
-import { useNavigate } from "react-router-dom";
-
 import useSearch from "../../../hooks/useSearch";
 
 const Header = () => {
-  const navigate = useNavigate();
   const { searchInputRef, querySearch, handleSearchInput, handleClearSearch } =
     useSearch();
 
@@ -18,7 +15,7 @@ const Header = () => {
             ref={searchInputRef}
             onChange={handleSearchInput}
             className="max-[320px]:ps-5 ps-10 placeholder:text-sm rounded-lg border py-2 focus:outline-2 focus:outline-blue-500"
-            placeholder="Search Product"
+            placeholder="Search Vouchers"
           />
           <LuSearch className="max-[320px]:hidden size-3.5 text-gray-500 absolute inset-0 translate-x-4 translate-y-3.5 " />
           {querySearch && (
@@ -30,17 +27,11 @@ const Header = () => {
             </button>
           )}
         </div>
-        <Button
-          onClick={() => navigate("/dashboard/products/create")}
-          className="sm:inline-flex  hidden text-sm py-2  gap-1 items-center"
-        >
-          <LuPlus className="size-4" /> Add Products
+        <Button className="sm:inline-flex  hidden text-sm py-2 px-4  gap-2 items-center">
+          <LuMonitor className="size-4" /> Create Sale
         </Button>
-        <Button
-          onClick={() => navigate("/dashboard/products/create")}
-          className=" sm:hidden text-sm size-10 rounded-full inline-flex justify-center items-center"
-        >
-          <LuPlus />
+        <Button className=" sm:hidden text-sm size-10 rounded-full inline-flex justify-center items-center">
+          <LuMonitor />
         </Button>
       </div>
     </header>
