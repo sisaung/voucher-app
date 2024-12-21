@@ -17,3 +17,8 @@ export const showVoucher = async (endPoint: string, voucherId: number) => {
   );
   return res.data;
 };
+
+export const storeVoucher = async (endPoint: string, data: any) => {
+  const res = await axiosInstance.post(`/${endPoint}`, data);
+  return res.data;
+};

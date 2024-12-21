@@ -22,8 +22,6 @@ const CreateProductForm = () => {
       updated_at: new Date().toISOString(),
     };
 
-    console.log(data.price);
-
     mutate(newData, {
       onSuccess: () => {
         toast.success("Product created successfully");

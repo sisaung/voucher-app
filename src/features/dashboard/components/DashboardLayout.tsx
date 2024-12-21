@@ -10,6 +10,7 @@ import useTokenStore from "../../../stores/useTokenStore";
 import { useShallow } from "zustand/shallow";
 import VoucherDeleteConfirmation from "../../vouchers/components/VoucherDeleteConfirmation";
 import ChooseInvoiceDownloadType from "../../vouchers/components/ChooseInvoiceDownloadType";
+import ChooseSaleProductModal from "../../sale/components/ChooseSaleProductModal";
 
 const DashboardLayout = () => {
   const [token, setToken] = useCookie("my_token");
@@ -35,6 +36,7 @@ const DashboardLayout = () => {
       <ProductDeleteConfirmation />
       <VoucherDeleteConfirmation />
       <ChooseInvoiceDownloadType />
+      <ChooseSaleProductModal />
       <HeaderOutletLayout />
     </div>
   );

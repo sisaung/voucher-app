@@ -38,7 +38,10 @@ export const productSchema = z.object({
     .max(30, "Name must be at most 30 characters"),
   price: z
     .string()
-    .regex(/^[1-9]\d*$/, "Price must be a positive number greater than 0")
+    .regex(
+      /^[+]?([1-9]\d*|0)?(\.\d+)?$/,
+      "Price must be a positive number greater than 0"
+    )
     .min(1, "Price must be at least 1")
     .max(1000, "Price must be at most 1000"),
   correct_product: z

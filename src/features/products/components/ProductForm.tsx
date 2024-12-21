@@ -40,6 +40,7 @@ const ProductForm = ({
           control={control}
           type="number"
           name="price"
+          step="any"
           placeholder="Enter your price"
           label="Price"
           defaultValue={defaultValue?.price}
