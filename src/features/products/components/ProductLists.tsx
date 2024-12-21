@@ -1,12 +1,10 @@
 import { useLocation, useSearchParams } from "react-router-dom";
-import EmptyRow from "../../../components/EmptyRow";
 import Pagination from "../../../components/Pagination";
 import useFetchProduct from "../hooks/useFetchProduct";
-import ProductListsLoader from "./ProductListsLoader";
 import ProductListsRow from "./ProductListsRow";
 import { RefObject } from "react";
 import SortData from "../../../components/SortData";
-import LoadingEmptyHandle from "./LoadingEmptyHandle";
+import LoadingEmptyHandle from "../../../components/LoadingEmptyHandle";
 
 export type OutletContext = {
   scrollContainerRef: RefObject<HTMLDivElement>;

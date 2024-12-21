@@ -9,8 +9,6 @@ const useSingleShowProduct = (endPoint: string, id: number) => {
     queryKey: ["single-product", id],
     queryFn: () => showProduct(endPoint, id),
     initialData: () => {
-      // const cachedData = queryClient.getQueryData<Products>(["products"]);
-
       const previousProducts = queryClient
         .getQueriesData<Products>({
           queryKey: ["products"],

@@ -1,4 +1,4 @@
-import EmptyRow from "../../../components/EmptyRow";
+import EmptyRow from "./EmptyRow";
 import ProductListsLoader from "./ProductListsLoader";
 
 type LoadingEmptyHandleProps = {

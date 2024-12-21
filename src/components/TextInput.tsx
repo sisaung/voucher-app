@@ -45,9 +45,9 @@ const TextInput = ({
           {label && (
             <label
               htmlFor={label}
-              className={`md:text-base text-sm ${
+              className={`${className} md:text-base text-sm ${
                 errors[name] ? "text-red-500" : ""
-              } ${className}`}
+              }  `}
             >
               {label}
             </label>
@@ -58,9 +58,9 @@ const TextInput = ({
           {label && (
             <label
               htmlFor={label}
-              className={`md:text-base text-sm ${
+              className={`${
                 errors[name] ? "text-red-500" : ""
-              } ${className}`}
+              } md:text-base text-sm ${className} `}
             >
               {label}
             </label>
@@ -71,7 +71,7 @@ const TextInput = ({
             {...control.register(name)}
             className={`border ${
               errors[name]
-                ? "border-red-500 focus:outline-red-500"
+                ? " border-red-500 focus:outline-red-500"
                 : "border-gray-200 focus:outline-blue-700"
             }  py-2 disabled:bg-gray-200  focus:outline-4 rounded-md px-5 ps-5 placeholder:text-sm`}
             {...inputProps}
@@ -80,7 +80,7 @@ const TextInput = ({
       )}
 
       {errors[name] && (
-        <p className="text-red-500 text-sm">
+        <p className="text-sm text-red-500">
           {errors[name]?.message?.toString()}
         </p>
       )}
