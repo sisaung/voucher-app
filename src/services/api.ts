@@ -1,5 +1,5 @@
 import { AuthData, LoginFormSchema, RegisterFormSchema } from "../types/auth";
-import { Products, ShowProduct } from "../types/product";
+import { Params, Products, ShowProduct } from "../types/product";
 import { axiosInstance } from "./axiosInstance";
 
 export const storeAuth = async (
@@ -10,7 +10,7 @@ export const storeAuth = async (
   return res.data;
 };
 
-export const fetchProducts = async (endPoint: string, params: any) => {
+export const fetchProducts = async (endPoint: string, params: Params) => {
   const res = await axiosInstance.get<Products>(`/${endPoint}${params}`);
 
   return res.data;

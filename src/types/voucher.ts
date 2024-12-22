@@ -1,22 +1,21 @@
 import { Links, Meta } from "./product";
 
 export type VoucherRecords = {
-  id: number,
-  voucher_id: number,
-  cost: number,
-  created_at: string,
-  updated_at:string,
-  quantity: number,
+  id: number;
+  voucher_id: number;
+  cost: number;
+  created_at: string;
+  updated_at: string;
+  quantity: number;
   product: {
-    id: number,
-    price: string,
-    product_name:string,
-    created_at: string,
-    updated_at: string,
-    user_id:string
-  }
-  
-}
+    id: number;
+    price: string;
+    product_name: string;
+    created_at: string;
+    updated_at: string;
+    user_id: string;
+  };
+};
 export type Voucher = {
   id: string;
   voucher_id: string;
@@ -28,25 +27,13 @@ export type Voucher = {
   total: string;
   net_total: string;
   tax: string;
-  records:VoucherRecords[]
+  records: VoucherRecords[];
 };
 
 export type VoucherDetail = {
   data: Voucher;
   message: string;
 };
-
-// export type VoucherMeta = {
-//   from: number;
-//   to: number;
-//   current_page: number;
-//   last_page: number;
-// };
-
-// export type VoucherLinks = {
-//   prev: string;
-//   next: string;
-// };
 
 export type VoucherData = {
   data: Voucher[];

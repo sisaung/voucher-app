@@ -1,10 +1,13 @@
 import { LuMonitor, LuSearch, LuX } from "react-icons/lu";
 import Button from "../../../components/ui/Button";
 import useSearch from "../../../hooks/useSearch";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { searchInputRef, querySearch, handleSearchInput, handleClearSearch } =
     useSearch();
+
+  const navigate = useNavigate();
 
   return (
     <header className="mt-5">
@@ -27,7 +30,10 @@ const Header = () => {
             </button>
           )}
         </div>
-        <Button className="sm:inline-flex  hidden text-sm py-2 px-4  gap-2 items-center">
+        <Button
+          onClick={() => navigate("/dashboard/sale")}
+          className="sm:inline-flex  hidden text-sm py-2 px-4  gap-2 items-center"
+        >
           <LuMonitor className="size-4" /> Create Sale
         </Button>
         <Button className=" sm:hidden text-sm size-10 rounded-full inline-flex justify-center items-center">

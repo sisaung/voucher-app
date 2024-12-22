@@ -11,11 +11,16 @@ import { useShallow } from "zustand/shallow";
 import VoucherDeleteConfirmation from "../../vouchers/components/VoucherDeleteConfirmation";
 import ChooseInvoiceDownloadType from "../../vouchers/components/ChooseInvoiceDownloadType";
 import ChooseSaleProductModal from "../../sale/components/ChooseSaleProductModal";
+import useUserStore from "../../../stores/useUserStore";
 
 const DashboardLayout = () => {
   const [token, setToken] = useCookie("my_token");
+  const [user, setUser] = useCookie("user");
   const { setTokenState } = useTokenStore(
     useShallow((state) => ({ setTokenState: state.setTokenState }))
+  );
+  const { setUserStore } = useUserStore(
+    useShallow((state) => ({ setUserStore: state.setUserStore }))
   );
 
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -26,11 +31,12 @@ const DashboardLayout = () => {
 
   useEffect(() => {
     setTokenState(token);
+    setUserStore(JSON.parse(user));
   }, [token]);
 
   return (
     <div className="flex w-full " ref={scrollContainerRef}>
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
 
       <SideNavigation />
       <ProductDeleteConfirmation />

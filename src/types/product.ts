@@ -1,5 +1,12 @@
 import { z } from "zod";
 
+export type Params = {
+  sort_by: string;
+  sort_direction: string;
+  page: string;
+  limit: string;
+  q?: string;
+};
 export type Product = {
   id?: number;
   product_name: string;
