@@ -12,7 +12,7 @@ import useVoucherDownloadStore from "../../../stores/useVoucherDownloadStore";
 
 const VoucherInfo = () => {
   const { id } = useParams();
-  const { data, isFetching } = useSingleShowVoucher("vouchers", Number(id));
+  const { data } = useSingleShowVoucher("vouchers", Number(id));
   const voucherDownloadRef = useRef<HTMLDivElement>(null);
   const { openInvoiceDownloadTypeModal, setOpenInvoiceDownloadTypeModal } =
     useModalStore(
@@ -101,7 +101,7 @@ const VoucherInfo = () => {
               </tr>
             </thead>
             <tbody>
-              <VoucherDetailLoaderHandle isFetching={isFetching} />
+              {/* <VoucherDetailLoaderHandle isFetching={isFetching} /> */}
               {voucher?.records?.map((record, index) => (
                 <VoucherDetailTableItems
                   key={record.id}

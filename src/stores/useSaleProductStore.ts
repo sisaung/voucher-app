@@ -1,13 +1,5 @@
 import { create } from "zustand";
-import { Product } from "../types/product";
-
-export type Params = {
-  sort_by: string;
-  sort_direction: string;
-  page: string;
-  limit: string;
-  q?: string;
-};
+import { Params, Product } from "../types/product";
 
 type SaleProduct = {
   openModal: boolean;

@@ -1,4 +1,3 @@
-// import VoucherDetailTable from "./VoucherDetailTable";
 import VoucherInfo from "./VoucherInfo";
 
 const VoucherDetailShow = () => {

@@ -12,7 +12,7 @@ const Breadcrumb = ({ currentTitle, links }: BreadcrumbProps) => {
       <div className={`flex max-[320px]:text-xs gap-1 sm:gap-3 items-center `}>
         <Link
           to="/dashboard"
-          className=" text-gray-400 inline-flex items-center gap-2 "
+          className=" hover:text-gray-800 text-gray-400 inline-flex items-center gap-2 "
         >
           <LuHouse />
           Dashboard
@@ -21,7 +21,7 @@ const Breadcrumb = ({ currentTitle, links }: BreadcrumbProps) => {
 
         {links?.map((link, i) => (
           <div key={i} className="flex items-center gap-3">
-            <Link to={link.path} className="text-gray-400">
+            <Link to={link.path} className="text-gray-400 hover:text-gray-800">
               {link.name}
             </Link>
             <LuChevronRight />
