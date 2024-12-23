@@ -101,7 +101,6 @@ const VoucherInfo = () => {
               </tr>
             </thead>
             <tbody>
-              {/* <VoucherDetailLoaderHandle isFetching={isFetching} /> */}
               {voucher?.records?.map((record, index) => (
                 <VoucherDetailTableItems
                   key={record.id}
@@ -113,7 +112,7 @@ const VoucherInfo = () => {
           </table>
         </div>
 
-        <div className="space-y-3 sm:ml-auto sm:max-w-[200px]">
+        <div className="space-y-3 sm:ml-auto me-3 sm:max-w-[200px]">
           <div className="flex justify-between text-sm text-gray-500">
             <span> Subtotal </span>
             <span>${voucher?.total}</span>
