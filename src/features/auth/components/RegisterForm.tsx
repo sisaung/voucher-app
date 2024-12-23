@@ -1,38 +1,14 @@
 import Button from "../../../components/ui/Button";
 import Container from "../../../components/Container";
-import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { RegisterFormSchema, registerSchema } from "../../../types/auth";
+import { Link } from "react-router-dom";
 import LoadingSpinner from "../../../components/LoadingSpinner";
 import TextInput from "../../../components/TextInput";
-import useAuth from "../hooks/useAuth";
-import toast from "react-hot-toast";
 import RouteGuard from "./RouteGuard";
+import useRegisterForm from "../hooks/useRegisterForm";
 
 const RegisterForm = () => {
-  const { control, handleSubmit, reset } = useForm<RegisterFormSchema>({
-    resolver: zodResolver(registerSchema),
-  });
-
-  const { mutate, isPending, error } = useAuth("register");
-  const navigate = useNavigate();
-
-  const handleRegister = (data: RegisterFormSchema) => {
-    mutate(data, {
-      onSuccess: () => {
-        toast.success("Registration successfully");
-        navigate("/");
-      },
-      onError: () => {
-        toast.error(
-          error?.message ?? "An unknown error occurred registration failed "
-        );
-      },
-    });
-
-    reset();
-  };
+  const { control, handleSubmit, isPending, handleRegister } =
+    useRegisterForm();
 
   return (
     <RouteGuard>
