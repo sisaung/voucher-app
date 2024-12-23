@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 const EditProductForm = memo(() => {
   const { id } = useParams();
 
-  const { reset } = useForm<ProductSchemaForm>({
+  const { control, reset, handleSubmit } = useForm<ProductSchemaForm>({
     resolver: zodResolver(productSchema),
   });
 
@@ -28,12 +28,12 @@ const EditProductForm = memo(() => {
     mutate(newData, {
       onSuccess: () => {
         toast.success("Product updated successfully");
+        reset();
         if (data.redirect_to_product) {
           navigate("/dashboard/products");
         }
       },
     });
-    reset();
   };
 
   return (
@@ -41,8 +41,9 @@ const EditProductForm = memo(() => {
       <h1 className="text-xl md:text-2xl font-bold mb-10"> Edit Product </h1>
       <ProductForm
         defaultValue={data?.data}
+        control={control}
         isPending={isPending}
-        handleProduct={handleUpdateProduct}
+        handleProduct={handleSubmit(handleUpdateProduct)}
       />
     </section>
   );

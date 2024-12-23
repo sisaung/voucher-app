@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import ProductForm from "./ProductForm";
 
 const CreateProductForm = () => {
-  const { reset } = useForm<ProductSchemaForm>({
+  const { control, reset, handleSubmit } = useForm<ProductSchemaForm>({
     resolver: zodResolver(productSchema),
   });
 
@@ -25,12 +25,13 @@ const CreateProductForm = () => {
     mutate(newData, {
       onSuccess: () => {
         toast.success("Product created successfully");
+        reset();
+
         if (data.redirect_to_product) {
           navigate("/dashboard/products");
         }
       },
     });
-    reset();
   };
 
   return (
@@ -38,7 +39,11 @@ const CreateProductForm = () => {
       <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-5">
         Create Your New Product
       </h1>
-      <ProductForm isPending={isPending} handleProduct={handleCreateProduct} />
+      <ProductForm
+        control={control}
+        isPending={isPending}
+        handleProduct={handleSubmit(handleCreateProduct)}
+      />
     </section>
   );
 };

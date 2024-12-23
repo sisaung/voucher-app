@@ -1,31 +1,25 @@
-import { useForm } from "react-hook-form";
 import TextInput from "../../../components/TextInput";
-import {
-  Product,
-  productSchema,
-  ProductSchemaForm,
-} from "../../../types/product";
+import { Product, ProductSchemaForm } from "../../../types/product";
 import Button from "../../../components/ui/Button";
 import LoadingSpinner from "../../../components/LoadingSpinner";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Control } from "react-hook-form";
+import { FormEvent } from "react";
 
 type ProductFormProps = {
-  handleProduct: (data: ProductSchemaForm) => void;
+  handleProduct: (e: FormEvent<HTMLFormElement>) => void;
   isPending: boolean;
+  control: Control<ProductSchemaForm>;
   defaultValue?: Product | undefined;
 };
 
 const ProductForm = ({
   isPending,
+  control,
   handleProduct,
   defaultValue,
 }: ProductFormProps) => {
-  const { control, handleSubmit } = useForm<ProductSchemaForm>({
-    resolver: zodResolver(productSchema),
-  });
-
   return (
-    <form onSubmit={handleSubmit(handleProduct)} className="max-w-md">
+    <form onSubmit={handleProduct} className="max-w-md">
       <div className="flex flex-col gap-4">
         <TextInput
           control={control}
