@@ -1,44 +1,12 @@
 import Button from "../../../components/ui/Button";
 import Container from "../../../components/Container";
-import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Link } from "react-router-dom";
 import LoadingSpinner from "../../../components/LoadingSpinner";
-import { LoginFormSchema, loginSchema } from "../../../types/auth";
 import TextInput from "../../../components/TextInput";
-import useAuth from "../hooks/useAuth";
-import toast from "react-hot-toast";
-import useCookie from "react-use-cookie";
 import RouteGuard from "./RouteGuard";
+import useLoginForm from "../hooks/useLoginForm";
 const LoginForm = () => {
-  const {
-    control,
-
-    handleSubmit,
-    reset,
-  } = useForm<LoginFormSchema>({ resolver: zodResolver(loginSchema) });
-
-  const { mutate, isPending, error } = useAuth("login");
-  const [token, setToken] = useCookie("my_token");
-  const [user, setUser] = useCookie("user");
-
-  const navigate = useNavigate();
-
-  const handleLogin = (formData: LoginFormSchema) => {
-    mutate(formData, {
-      onSuccess: (data) => {
-        setToken(data.token);
-        setUser(JSON.stringify(data.user));
-        toast.success("Welcome,Login Successfully");
-        navigate("/dashboard");
-      },
-      onError: () => {
-        toast.error(error?.message ?? "An unknown error occurred");
-      },
-    });
-
-    reset();
-  };
+  const { control, handleSubmit, handleLogin, isPending } = useLoginForm();
 
   return (
     <RouteGuard>

@@ -3,9 +3,10 @@ import {
   LuFileText,
   LuHouse,
   LuPackage,
+  LuUser,
 } from "react-icons/lu";
 import { NavLink } from "react-router-dom";
-import { color, motion } from "motion/react";
+import { motion } from "motion/react";
 import { useShallow } from "zustand/shallow";
 import useToggleSideNav from "../../../stores/useToggleSideNav";
 import { AnimatePresence } from "motion/react";
@@ -36,6 +37,11 @@ const SideNavigation = () => {
       name: "Vouchers",
       path: "/dashboard/vouchers",
       icon: <LuFileText className="size-5" />,
+    },
+    {
+      name: "User Profile",
+      path: "/dashboard/user-profile",
+      icon: <LuUser className="size-5" />,
     },
   ];
 
