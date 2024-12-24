@@ -38,11 +38,12 @@ const EditProductForm = memo(() => {
 
   return (
     <section className="mt-8">
-      <h1 className="text-xl md:text-2xl font-bold mb-10"> Edit Product </h1>
+      <h1 className="mb-10 text-xl font-bold md:text-2xl"> Edit Product </h1>
       <ProductForm
         defaultValue={data?.data}
         control={control}
         isPending={isPending}
+        updateCheck
         handleProduct={handleSubmit(handleUpdateProduct)}
       />
     </section>

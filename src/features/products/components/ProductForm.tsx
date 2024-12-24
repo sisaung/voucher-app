@@ -10,6 +10,7 @@ type ProductFormProps = {
   isPending: boolean;
   control: Control<ProductSchemaForm>;
   defaultValue?: Product | undefined;
+  updateCheck?: boolean;
 };
 
 const ProductForm = ({
@@ -17,6 +18,7 @@ const ProductForm = ({
   control,
   handleProduct,
   defaultValue,
+  updateCheck,
 }: ProductFormProps) => {
   return (
     <form onSubmit={handleProduct} className="max-w-md">
@@ -57,11 +59,12 @@ const ProductForm = ({
           type="checkbox"
           disabled={isPending}
           check
+          updateCheck={updateCheck}
         />
 
         <Button
           type="submit"
-          className="py-2 disabled:opacity-80 inline-flex justify-center gap-3 disabled:pointer-events-none"
+          className="inline-flex justify-center gap-3 py-2 disabled:opacity-80 disabled:pointer-events-none"
           disabled={isPending}
         >
           {isPending && <LoadingSpinner />}
