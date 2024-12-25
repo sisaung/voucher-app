@@ -2,6 +2,7 @@ import { LuDollarSign, LuFileText, LuPackage, LuReceipt } from "react-icons/lu";
 import { motion } from "motion/react";
 import useFetchProduct from "../../products/hooks/useFetchProduct";
 import useFetchVoucher from "../../vouchers/hooks/useFetchVoucher";
+import LatestVoucherLists from "./LatestVoucherLists";
 
 const TotalDashboardItemsList = () => {
   const { data: products } = useFetchProduct("products", "?page=1");
@@ -43,33 +44,38 @@ const TotalDashboardItemsList = () => {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-      className="px-5 py-5"
-    >
-      <h1 className="text-2xl font-bold mb-7"> Dashboard </h1>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {status.map((item, index) => (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            key={index}
-            className="col-span-1 py-6 bg-white rounded-xl"
-          >
-            <div className="flex items-center gap-4 px-7">
-              <div className={`p-3 ${item.color} rounded-lg `}>{item.icon}</div>
-              <div className="space-y-1">
-                <p className="text-sm text-gray-700"> {item.title} </p>
-                <p className="text-xl font-medium "> {item.value} </p>
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="px-5 py-5"
+      >
+        <h1 className="text-2xl font-bold mb-7"> Dashboard </h1>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {status.map((item, index) => (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              key={index}
+              className="col-span-1 py-6 bg-white rounded-xl"
+            >
+              <div className="flex items-center gap-4 px-7">
+                <div className={`p-3 ${item.color} rounded-lg `}>
+                  {item.icon}
+                </div>
+                <div className="space-y-1">
+                  <p className="text-sm text-gray-700"> {item.title} </p>
+                  <p className="text-xl font-medium "> {item.value} </p>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+      <LatestVoucherLists />
+    </>
   );
 };
 

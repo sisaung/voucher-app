@@ -13,7 +13,6 @@ const CreateProductForm = () => {
       <ProductForm
         control={control}
         isPending={isPending}
-        updateCheck={false}
         handleProduct={handleSubmit(handleCreateProduct)}
       />
     </section>

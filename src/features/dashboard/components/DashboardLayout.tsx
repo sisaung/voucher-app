@@ -14,8 +14,8 @@ import ChooseSaleProductModal from "../../sale/components/ChooseSaleProductModal
 import useUserStore from "../../../stores/useUserStore";
 
 const DashboardLayout = () => {
-  const [token, setToken] = useCookie("my_token");
-  const [user, setUser] = useCookie("user");
+  const [token] = useCookie("my_token");
+  const [user] = useCookie("user");
   const { setTokenState } = useTokenStore(
     useShallow((state) => ({ setTokenState: state.setTokenState }))
   );
