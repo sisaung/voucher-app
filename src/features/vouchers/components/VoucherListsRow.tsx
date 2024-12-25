@@ -50,7 +50,7 @@ const VoucherListsRow = ({
 
   return (
     <tr>
-      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+      <td className="px-5 py-4 whitespace-nowrap text-sm text-gray-500">
         <div className="space-y-1">
           <p>{voucher_id}</p>
           <div className="flex items-center gap-1  text-gray-400">
