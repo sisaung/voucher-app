@@ -5,6 +5,7 @@ import { Fragment } from "react/jsx-runtime";
 import urlToParamObj from "../../../utils/urlToParamObj";
 import useSaleProductStore from "../../../stores/useSaleProductStore";
 import { useShallow } from "zustand/shallow";
+import useSaleProductPagination from "../hooks/useSaleProductPagination";
 
 type SaleProductPaginationProps = {
   meta: Meta;
@@ -15,26 +16,13 @@ const SaleProductPagination = ({
   meta: { from, to, total, current_page, last_page },
   links: { next, prev },
 }: SaleProductPaginationProps) => {
-  const { params, setParams } = useSaleProductStore(
-    useShallow((state) => ({
-      params: state.params,
-      setParams: state.setParams,
-    }))
-  );
-
-  const specificPages = useVisiblePageNumbers(current_page, last_page);
-  const handleSpecificPageClick = (page: string) => {
-    setParams({ ...params, page: page } as Params);
-  };
-
-  const handlePreviousBtn = () => {
-    const paramsObj = urlToParamObj(prev);
-    setParams(paramsObj as Params);
-  };
-  const handleNextBtn = () => {
-    const paramsObj = urlToParamObj(next);
-    setParams(paramsObj as Params);
-  };
+  
+  const {
+    specificPages,
+    handleSpecificPageClick,
+    handlePreviousBtn,
+    handleNextBtn,
+  } = useSaleProductPagination(prev,next,current_page,last_page)
 
   return (
     <div className="flex sm:flex-row flex-col items-start sm:items-center justify-between mt-5 sm:gap-0 gap-3 ">
