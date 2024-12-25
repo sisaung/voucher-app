@@ -5,8 +5,10 @@ import LoadingSpinner from "../../../components/LoadingSpinner";
 import TextInput from "../../../components/TextInput";
 import RouteGuard from "./RouteGuard";
 import useLoginForm from "../hooks/useLoginForm";
+import useHandleApiError from "../../../hooks/useHandleApiError";
 const LoginForm = () => {
   const { control, handleSubmit, handleLogin, isPending } = useLoginForm();
+  useHandleApiError();
 
   return (
     <RouteGuard>

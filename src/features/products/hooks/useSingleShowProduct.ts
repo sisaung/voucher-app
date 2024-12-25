@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { showProduct } from "../../../services/api";
+import { showProduct } from "../../../services/productApi";
 import { Products } from "../../../types/product";
 
 const useSingleShowProduct = (endPoint: string, id: number) => {
