@@ -48,7 +48,8 @@ const VoucherInfo = () => {
               onClick={handleDownload}
               className="print:hidden focus:outline-2 focus:outline-cyan-600  active:scale-75 inline-flex items-center gap-1 py-1.5 bg-cyan-500 hover:bg-cyan-600 duration-300 "
             >
-              <LuDownload /> <span className="text-xs">Download</span>
+              <LuDownload className="text-white" />
+              <span className="text-xs text-white">Download</span>
             </Button>
           )}
         </div>

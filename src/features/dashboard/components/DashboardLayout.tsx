@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom";
 import useTokenStore from "../../../stores/useTokenStore";
 import { useShallow } from "zustand/shallow";
 import VoucherDeleteConfirmation from "../../vouchers/components/VoucherDeleteConfirmation";
-import ChooseInvoiceDownloadType from "../../vouchers/components/ChooseInvoiceDownloadType";
+import ChooseVoucherDownloadType from "../../vouchers/components/ChooseVoucherDownloadType";
 import ChooseSaleProductModal from "../../sale/components/ChooseSaleProductModal";
 import useUserStore from "../../../stores/useUserStore";
 
@@ -41,7 +41,7 @@ const DashboardLayout = () => {
       <SideNavigation />
       <ProductDeleteConfirmation />
       <VoucherDeleteConfirmation />
-      <ChooseInvoiceDownloadType />
+      <ChooseVoucherDownloadType />
       <ChooseSaleProductModal />
       <HeaderOutletLayout />
     </div>
