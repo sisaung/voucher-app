@@ -93,7 +93,7 @@ const SaleSection = () => {
               type="submit"
               disabled={isPending}
               form="sale-form"
-              className="text-xs text-nowrap  hover:bg-emerald-600 inline-flex items-center gap-1 py-2 sm:text-sm bg-emerald-500 disabled:opacity-75"
+              className="text-xs text-nowrap  hover:bg-emerald-600 inline-flex items-center gap-1 py-2 sm:text-sm text-white bg-emerald-500 disabled:opacity-75"
             >
               {isPending ? (
                 <>

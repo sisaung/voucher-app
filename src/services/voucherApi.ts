@@ -2,7 +2,10 @@ import { Params } from "../types/product";
 import { VoucherData, VoucherDetail } from "../types/voucher";
 import { axiosInstance } from "./axiosInstance";
 
-export const fetchVouchers = async (endPoint: string, param: any) => {
+export const fetchVouchers = async (
+  endPoint: string,
+  param: Params | string
+) => {
   const res = await axiosInstance.get<VoucherData>(`/${endPoint}${param}`);
   return res.data;
 };

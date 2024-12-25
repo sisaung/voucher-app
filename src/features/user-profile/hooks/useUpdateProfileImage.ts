@@ -3,7 +3,7 @@ import { updateProfileImage } from "../../../services/userProfileApi";
 
 const useUpdateProfileImage = (endPoint: string) => {
   return useMutation({
-    mutationFn: (data: File) => updateProfileImage(endPoint, data),
+    mutationFn: (data: FormData) => updateProfileImage(endPoint, data),
   });
 };
 

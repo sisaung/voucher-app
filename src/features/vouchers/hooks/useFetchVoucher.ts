@@ -3,7 +3,7 @@ import { fetchVouchers } from "../../../services/voucherApi";
 import paramsToObj from "../../../utils/paramsToObj";
 import { Params } from "../../../types/product";
 
-const useFetchVoucher = (endPoint: string, params: Params) => {
+const useFetchVoucher = (endPoint: string, params: Params | string) => {
   const currentParamsObj = paramsToObj(params);
 
   return useQuery({

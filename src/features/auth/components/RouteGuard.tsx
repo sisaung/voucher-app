@@ -7,7 +7,7 @@ type RouteGuardProps = {
 };
 
 const RouteGuard = ({ children }: RouteGuardProps) => {
-  const [token, setToken] = useCookie("my_token");
+  const [token] = useCookie("my_token");
 
   if (token) {
     return <Navigate to="/dashboard" />;

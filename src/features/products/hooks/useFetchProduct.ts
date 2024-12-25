@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchProducts } from "../../../services/api";
+import { fetchProducts } from "../../../services/productApi";
 import paramsToObj from "../../../utils/paramsToObj";
 import { Params } from "../../../types/product";
 
-const useFetchProduct = (endPoint: string, params: Params) => {
+const useFetchProduct = (endPoint: string, params: Params | string) => {
   const currentParamsObj = paramsToObj(params);
 
   return useQuery({

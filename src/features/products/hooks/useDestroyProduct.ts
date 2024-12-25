@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { destroyProduct } from "../../../services/api";
+import { destroyProduct } from "../../../services/productApi";
 import { Products } from "../../../types/product";
 import toast from "react-hot-toast";
 

@@ -31,11 +31,11 @@ export default Button;
 const buttonVariants = cva("rounded", {
   variants: {
     variant: {
-      primary: "bg-blue-500 hover:bg-blue-700 text-white ",
+      primary: "bg-lime-400 hover:bg-lime-500   ",
       secondary: "bg-cyan-500 hover:bg-cyan-700 text-white ",
       destructive: "bg-red-500 hover:bg-red-600 text-white ",
       outline:
-        "border border-gray-200 text-gray-500 hover:bg-blue-500 hover:text-white ",
+        "border border-gray-200 text-gray-500 hover:bg-green-500 hover:text-white ",
     },
     size: {
       sm: "text-sm px-2 py-1",

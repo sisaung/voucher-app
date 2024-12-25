@@ -9,13 +9,13 @@ import { Navigate } from "react-router-dom";
 import useTokenStore from "../../../stores/useTokenStore";
 import { useShallow } from "zustand/shallow";
 import VoucherDeleteConfirmation from "../../vouchers/components/VoucherDeleteConfirmation";
-import ChooseInvoiceDownloadType from "../../vouchers/components/ChooseInvoiceDownloadType";
+import ChooseVoucherDownloadType from "../../vouchers/components/ChooseVoucherDownloadType";
 import ChooseSaleProductModal from "../../sale/components/ChooseSaleProductModal";
 import useUserStore from "../../../stores/useUserStore";
 
 const DashboardLayout = () => {
-  const [token, setToken] = useCookie("my_token");
-  const [user, setUser] = useCookie("user");
+  const [token] = useCookie("my_token");
+  const [user] = useCookie("user");
   const { setTokenState } = useTokenStore(
     useShallow((state) => ({ setTokenState: state.setTokenState }))
   );
@@ -41,7 +41,7 @@ const DashboardLayout = () => {
       <SideNavigation />
       <ProductDeleteConfirmation />
       <VoucherDeleteConfirmation />
-      <ChooseInvoiceDownloadType />
+      <ChooseVoucherDownloadType />
       <ChooseSaleProductModal />
       <HeaderOutletLayout />
     </div>

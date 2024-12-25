@@ -6,6 +6,7 @@ type TextInputProps = ComponentPropsWithoutRef<"input"> & {
   type: string;
   name: string;
   check?: boolean;
+  updateCheck?: boolean;
   className?: string;
   control: Control<any>;
 };
@@ -16,6 +17,7 @@ const TextInput = ({
   control,
   name,
   check,
+  updateCheck,
   className,
   ...inputProps
 }: TextInputProps) => {
@@ -41,6 +43,7 @@ const TextInput = ({
                 : "border-gray-200 focus:outline-blue-700"
             }  py-2  disabled:bg-gray-200 focus:outline-4 rounded-md px-5 ps-5 placeholder:text-sm`}
             {...inputProps}
+            checked={updateCheck}
           />
           {label && (
             <label

@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { storeAuth } from "../../../services/api";
+import { storeAuth } from "../../../services/productApi";
 
 const useAuth = (endPoint: string) => {
   return useMutation({

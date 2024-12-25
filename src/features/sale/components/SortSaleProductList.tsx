@@ -1,9 +1,5 @@
 import { LuChevronDown, LuChevronUp } from "react-icons/lu";
-import { SortData } from "../../../components/SortData";
-import useSaleProductStore, {
-  Params,
-} from "../../../stores/useSaleProductStore";
-import { useShallow } from "zustand/shallow";
+import useSortSaleProductList from "../hooks/useSortSaleProductList";
 
 type SortDataProps = {
   name: string;
@@ -12,28 +8,7 @@ type SortDataProps = {
 };
 
 const SortSaleProductList = ({ name, sort_by, align }: SortDataProps) => {
-  const { params, setParams } = useSaleProductStore(
-    useShallow((state) => ({
-      params: state.params,
-      setParams: state.setParams,
-    }))
-  );
-
-  const handleIncrementBtn = (sortData: SortData) => {
-    setParams({
-      ...params,
-      sort_by: sortData.sort_by,
-      sort_direction: sortData.sort_direction,
-    } as Params);
-  };
-
-  const handleDecrementBtn = (sortData: SortData) => {
-    setParams({
-      ...params,
-      sort_by: sortData.sort_by,
-      sort_direction: sortData.sort_direction,
-    } as Params);
-  };
+  const { handleIncrementBtn, handleDecrementBtn } = useSortSaleProductList();
 
   return (
     <div

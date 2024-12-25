@@ -48,7 +48,8 @@ const VoucherInfo = () => {
               onClick={handleDownload}
               className="print:hidden focus:outline-2 focus:outline-cyan-600  active:scale-75 inline-flex items-center gap-1 py-1.5 bg-cyan-500 hover:bg-cyan-600 duration-300 "
             >
-              <LuDownload /> <span className="text-xs">Download</span>
+              <LuDownload className="text-white" />
+              <span className="text-xs text-white">Download</span>
             </Button>
           )}
         </div>
@@ -101,7 +102,6 @@ const VoucherInfo = () => {
               </tr>
             </thead>
             <tbody>
-              {/* <VoucherDetailLoaderHandle isFetching={isFetching} /> */}
               {voucher?.records?.map((record, index) => (
                 <VoucherDetailTableItems
                   key={record.id}
@@ -113,7 +113,7 @@ const VoucherInfo = () => {
           </table>
         </div>
 
-        <div className="space-y-3 sm:ml-auto sm:max-w-[200px]">
+        <div className="space-y-3 sm:ml-auto me-3 sm:max-w-[200px]">
           <div className="flex justify-between text-sm text-gray-500">
             <span> Subtotal </span>
             <span>${voucher?.total}</span>

@@ -12,7 +12,7 @@ export const updateProfileName = async (
   return res.data;
 };
 
-export const updateProfileImage = async (endPoint: string, data: File) => {
+export const updateProfileImage = async (endPoint: string, data: FormData) => {
   const res = await axiosInstance.post<EditProfile>(`/${endPoint}`, data);
   return res.data;
 };

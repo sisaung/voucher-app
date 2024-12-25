@@ -1,9 +1,9 @@
 import { LuChevronDown, LuChevronLeft, LuChevronRight } from "react-icons/lu";
-import { useSearchParams } from "react-router-dom";
-import { ChangeEvent, Fragment, useCallback } from "react";
-import urlToParamObj from "../utils/urlToParamObj";
-import useVisiblePageNumbers from "../hooks/useVisiblePageNumber";
+
+import { Fragment } from "react";
+
 import { Meta, Links } from "../types/product";
+import usePagination from "../hooks/usePagination";
 
 type PaginationProps = {
   meta: Meta;
@@ -14,42 +14,15 @@ const Pagination = ({
   meta: { from, to, current_page, last_page, total },
   links: { prev, next },
 }: PaginationProps) => {
-  const [params, setParams] = useSearchParams();
-  const rowsPerPage = [3, 5, 10, 30, 50];
-  const rowsPerPageValue = params.get("limit") ?? 5;
-  const searchParams = useCallback(
-    (url: string) => {
-      const paramsObj = urlToParamObj(url);
-
-      setParams(paramsObj);
-    },
-    [prev, next]
-  );
-
-  const handlePreviousBtn = () => {
-    searchParams(prev);
-  };
-
-  const handleNextBtn = () => {
-    searchParams(next);
-  };
-
-  const handleSpecificPageClick = useCallback(
-    (page: number) => {
-      const searchParams = new URLSearchParams(params);
-      searchParams.set("page", page.toString());
-      setParams(searchParams);
-    },
-    [from, to]
-  );
-
-  const specificPages = useVisiblePageNumbers(current_page, last_page);
-
-  const handleRowsPerPage = (e: ChangeEvent<HTMLSelectElement>) => {
-    const searchParams = new URLSearchParams(params);
-    searchParams.set("limit", e.target.value);
-    setParams(searchParams);
-  };
+  const {
+    rowsPerPage,
+    rowsPerPageValue,
+    handleRowsPerPage,
+    handlePreviousBtn,
+    handleNextBtn,
+    specificPages,
+    handleSpecificPageClick,
+  } = usePagination(prev, next, from, to, current_page, last_page);
 
   return (
     <section className="mt-5">
@@ -101,9 +74,9 @@ const Pagination = ({
                       <button
                         className={`${
                           page === current_page
-                            ? "ml-2 bg-blue-600 text-white"
+                            ? "ml-2 bg-emerald-400 text-white "
                             : ""
-                        } px-2.5 py-0.5 border-gray-600 first:bg-gray-700 last:bg-red-500 `}
+                        } px-2.5 py-0.5 border-gray-600  `}
                         onClick={handleSpecificPageClick.bind(
                           null,
                           page as number
