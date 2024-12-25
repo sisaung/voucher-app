@@ -9,7 +9,7 @@ const ProfileCard = () => {
 
   return (
     <div className=" bg-white col-span-3 lg:col-span-6 border border-gray-200 shadow-md rounded-lg overflow-hidden">
-      <div className=" h-32  bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+      <div className=" h-32  bg-gradient-to-r from-emerald-400 to-emerald-500"></div>
       <div className="size-24 flex justify-center items-center rounded-full bg-white mx-5 -mt-12">
         <img
           src={

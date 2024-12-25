@@ -91,7 +91,7 @@ const SaleRecordTable = () => {
           <div className="space-x-2">
             <Button
               onClick={handleAddTax}
-              className="inline-flex items-center gap-2 text-xs "
+              className="inline-flex items-center gap-2 text-xs bg-gray-100 text-emerald-500 font-semibold hover:bg-gray-100 "
             >
               <LuPercent /> Add Taxes
             </Button>

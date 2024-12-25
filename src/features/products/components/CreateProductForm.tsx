@@ -1,38 +1,9 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { productSchema, ProductSchemaForm } from "../../../types/product";
-import useStoreProduct from "../hooks/useStoreProduct";
-import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 import ProductForm from "./ProductForm";
+import useCreateProduct from "../hooks/useCreateProduct";
 
 const CreateProductForm = () => {
-  const { control, reset, handleSubmit } = useForm<ProductSchemaForm>({
-    resolver: zodResolver(productSchema),
-  });
-
-  const { mutate, isPending } = useStoreProduct("products");
-  const navigate = useNavigate();
-
-  const handleCreateProduct = (data: ProductSchemaForm) => {
-    const newData = {
-      product_name: data.name,
-      price: Number(data.price),
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    };
-
-    mutate(newData, {
-      onSuccess: () => {
-        toast.success("Product created successfully");
-        reset();
-
-        if (data.redirect_to_product) {
-          navigate("/dashboard/products");
-        }
-      },
-    });
-  };
+  const { control, handleSubmit, isPending, handleCreateProduct } =
+    useCreateProduct();
 
   return (
     <section className="mt-10">

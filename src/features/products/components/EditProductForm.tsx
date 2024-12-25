@@ -1,40 +1,10 @@
-import { useForm } from "react-hook-form";
 import ProductForm from "./ProductForm";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { productSchema, ProductSchemaForm } from "../../../types/product";
-import useUpdateProduct from "../hooks/useUpdateProduct";
-import { useNavigate, useParams } from "react-router-dom";
-import useSingleShowProduct from "../hooks/useSingleShowProduct";
 import { memo } from "react";
-import toast from "react-hot-toast";
+import useEditProduct from "../hooks/useEditProduct";
 
 const EditProductForm = memo(() => {
-  const { id } = useParams();
-
-  const { control, reset, handleSubmit } = useForm<ProductSchemaForm>({
-    resolver: zodResolver(productSchema),
-  });
-
-  const { data } = useSingleShowProduct("products", Number(id));
-  const { mutate, isPending } = useUpdateProduct("products", Number(id));
-  const navigate = useNavigate();
-
-  const handleUpdateProduct = (data: ProductSchemaForm) => {
-    const newData = {
-      product_name: data.name,
-      price: Number(data.price),
-    };
-
-    mutate(newData, {
-      onSuccess: () => {
-        toast.success("Product updated successfully");
-        reset();
-        if (data.redirect_to_product) {
-          navigate("/dashboard/products");
-        }
-      },
-    });
-  };
+  const { control, handleSubmit, isPending, handleUpdateProduct, data } =
+    useEditProduct();
 
   return (
     <section className="mt-8">

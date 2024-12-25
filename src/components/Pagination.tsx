@@ -101,9 +101,9 @@ const Pagination = ({
                       <button
                         className={`${
                           page === current_page
-                            ? "ml-2 bg-blue-600 text-white"
+                            ? "ml-2 bg-emerald-400 text-white "
                             : ""
-                        } px-2.5 py-0.5 border-gray-600 first:bg-gray-700 last:bg-red-500 `}
+                        } px-2.5 py-0.5 border-gray-600  `}
                         onClick={handleSpecificPageClick.bind(
                           null,
                           page as number

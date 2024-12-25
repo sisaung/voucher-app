@@ -30,7 +30,6 @@ const ProductListsRow = ({ product }: ProductListsRowProps) => {
   const handleDeleteProduct = () => {
     setOpenProductDeletedModal(true);
     setDeletedProductId(product.id ?? 0);
-    // mutate(product.id);
   };
 
   return (

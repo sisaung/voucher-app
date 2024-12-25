@@ -10,7 +10,7 @@ export const storeAuth = async (
   return res.data;
 };
 
-export const fetchProducts = async (endPoint: string, params: Params) => {
+export const fetchProducts = async (endPoint: string, params: Params | string) => {
   const res = await axiosInstance.get<Products>(`/${endPoint}${params}`);
 
   return res.data;

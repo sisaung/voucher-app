@@ -47,7 +47,7 @@ const SaleProductSelectForm = () => {
             variant="outline"
             disabled={!selectedSaleProduct || !quantity}
             onClick={handleAddProducts}
-            className="selected-none text-nowrap disabled:bg-gray-200 disabled:opacity-70 disabled:pointer-events-none inline-flex items-center px-5 gap-2 py-2.5 text-sm"
+            className="selected-none text-nowrap disabled:bg-gray-200 disabled:opacity-70 disabled:pointer-events-none inline-flex items-center px-5 gap-2 py-2.5 text-sm "
           >
             <LuCirclePlus className="size-5 " />
             Add Products

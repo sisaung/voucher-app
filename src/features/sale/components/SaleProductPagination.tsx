@@ -1,11 +1,9 @@
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
-import { Links, Meta } from "../../../types/product";
+import { Links, Meta, Params } from "../../../types/product";
 import useVisiblePageNumbers from "../../../hooks/useVisiblePageNumber";
 import { Fragment } from "react/jsx-runtime";
 import urlToParamObj from "../../../utils/urlToParamObj";
-import useSaleProductStore, {
-  Params,
-} from "../../../stores/useSaleProductStore";
+import useSaleProductStore from "../../../stores/useSaleProductStore";
 import { useShallow } from "zustand/shallow";
 
 type SaleProductPaginationProps = {
@@ -62,8 +60,10 @@ const SaleProductPagination = ({
                 <>
                   <button
                     className={`${
-                      page === current_page ? "ml-2 bg-blue-600 text-white" : ""
-                    } px-2.5 py-0.5 border-gray-600 first:bg-gray-700 last:bg-red-500 `}
+                      page === current_page
+                        ? "ml-2 bg-green-400 text-white"
+                        : ""
+                    } px-2.5 py-0.5 border-gray-600 `}
                     onClick={handleSpecificPageClick.bind(null, page as string)}
                   >
                     {page}

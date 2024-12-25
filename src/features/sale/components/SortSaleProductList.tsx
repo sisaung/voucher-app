@@ -1,9 +1,8 @@
 import { LuChevronDown, LuChevronUp } from "react-icons/lu";
 import { SortData } from "../../../components/SortData";
-import useSaleProductStore, {
-  Params,
-} from "../../../stores/useSaleProductStore";
+import useSaleProductStore from "../../../stores/useSaleProductStore";
 import { useShallow } from "zustand/shallow";
+import { Params } from "../../../types/product";
 
 type SortDataProps = {
   name: string;

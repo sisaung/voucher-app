@@ -79,8 +79,8 @@ const SideNavigation = () => {
                         <span
                           className={`flex items-center gap-3 px-5 py-2.5 rounded-lg  duration-300 ${
                             isActive
-                              ? "bg-gray-100 text-blue-500 hover:text-blue-600 hover:bg-blue-100"
-                              : "text-gray-600 hover:bg-gray-100 hover:text-blue-500"
+                              ? "bg-lime-400   hover:bg-lime-500"
+                              : " hover:bg-lime-400 hover:text-black text-gray-500 "
                           } `}
                         >
                           {item.icon} {item.name}
