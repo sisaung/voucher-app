@@ -2,7 +2,7 @@ import axios from "axios";
 import { getCookie } from "react-use-cookie";
 
 export const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: import.meta.env.VITE_BASE_API_URL,
   headers: {
     Accept: "Application/json",
   },
