@@ -7,7 +7,7 @@ import SortData from "../../../components/SortData";
 
 const VoucherLists = () => {
   const location = useLocation();
-  const [params, setParams] = useSearchParams();
+  const [params, _setParams] = useSearchParams();
   const { data, isPending } = useFetchVoucher("vouchers", location.search);
 
   const limit = params.get("limit") ?? 5;

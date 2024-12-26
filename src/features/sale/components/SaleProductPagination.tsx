@@ -1,10 +1,6 @@
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
-import { Links, Meta, Params } from "../../../types/product";
-import useVisiblePageNumbers from "../../../hooks/useVisiblePageNumber";
+import { Links, Meta } from "../../../types/product";
 import { Fragment } from "react/jsx-runtime";
-import urlToParamObj from "../../../utils/urlToParamObj";
-import useSaleProductStore from "../../../stores/useSaleProductStore";
-import { useShallow } from "zustand/shallow";
 import useSaleProductPagination from "../hooks/useSaleProductPagination";
 
 type SaleProductPaginationProps = {
@@ -16,16 +12,15 @@ const SaleProductPagination = ({
   meta: { from, to, total, current_page, last_page },
   links: { next, prev },
 }: SaleProductPaginationProps) => {
-  
   const {
     specificPages,
     handleSpecificPageClick,
     handlePreviousBtn,
     handleNextBtn,
-  } = useSaleProductPagination(prev,next,current_page,last_page)
+  } = useSaleProductPagination(prev, next, current_page, last_page);
 
   return (
-    <div className="flex sm:flex-row flex-col items-start sm:items-center justify-between mt-5 sm:gap-0 gap-3 ">
+    <div className="flex flex-col items-start justify-between gap-3 mt-5 sm:flex-row sm:items-center sm:gap-0 ">
       <div>
         <p className="text-sm ">
           Showing <b> {from} </b> to <b> {to} </b> of <b> {total} </b> entries

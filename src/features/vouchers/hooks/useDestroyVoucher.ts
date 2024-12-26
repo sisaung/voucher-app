@@ -31,7 +31,7 @@ const useDestroyVoucher = (endPoint: string) => {
 
       return { previousData };
     },
-    onError: (error, id, context) => {
+    onError: (error, _id, context) => {
       queryClient.setQueriesData(
         { queryKey: ["vouchers"] },
         context?.previousData

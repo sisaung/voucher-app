@@ -40,7 +40,7 @@ const useUpdateProduct = (endPoint: string, updateId: number) => {
       return { previousProducts };
     },
 
-    onError: (error, updatedProduct, context) => {
+    onError: (_error, _updatedProduct, context) => {
       queryClient.setQueryData(["products"], context?.previousProducts);
     },
 

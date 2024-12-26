@@ -4,9 +4,8 @@ import { useQueryClient } from "@tanstack/react-query";
 import useCookie from "react-use-cookie";
 import { axiosInstance } from "../services/axiosInstance";
 
-// Axios interceptor for handling unauthorized errors
 const useHandleApiError = () => {
-  const [token, setToken, removeToken] = useCookie("my_token");
+  const [_token, _setToken, removeToken] = useCookie("my_token");
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
@@ -15,10 +14,9 @@ const useHandleApiError = () => {
       (response) => response,
       async (error) => {
         if (error.response?.status === 401) {
-          // Token is invalid or expired
-          removeToken(); // Remove token from cookies
-          queryClient.clear(); // Clear React Query cache
-          navigate("/login"); // Redirect to login page
+          removeToken();
+          queryClient.clear();
+          navigate("/");
         }
         return Promise.reject(error);
       }

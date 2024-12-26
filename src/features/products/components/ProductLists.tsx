@@ -12,7 +12,7 @@ export type OutletContext = {
 
 const ProductLists = () => {
   const location = useLocation();
-  const [params, setParams] = useSearchParams();
+  const [params, _] = useSearchParams();
 
   const { data, isPending } = useFetchProduct("products", location.search);
 
@@ -26,22 +26,22 @@ const ProductLists = () => {
         <table className="min-w-full bg-white">
           <thead className="bg-gray-100">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                 <SortData name="ID" sort_by="id" />
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                 <SortData name="Name" sort_by="product_name" />
               </th>
-              <th className="text-end px-6 py-3  text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase text-end">
                 <SortData name="Price" sort_by="price" align />
               </th>
-              <th className="text-end px-6 py-3  text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase text-end">
                 Created
               </th>
-              <th className="text-end px-6 py-3  text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase text-end">
                 Updated
               </th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
                 Action
               </th>
             </tr>

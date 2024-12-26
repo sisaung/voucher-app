@@ -15,8 +15,8 @@ const useLoginForm = () => {
   } = useForm<LoginFormSchema>({ resolver: zodResolver(loginSchema) });
 
   const { mutate, isPending, error } = useAuth("login");
-  const [token, setToken] = useCookie("my_token");
-  const [user, setUser] = useCookie("user");
+  const [_token, setToken] = useCookie("my_token");
+  const [_user, setUser] = useCookie("user");
 
   const navigate = useNavigate();
 

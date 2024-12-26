@@ -41,7 +41,7 @@ const useStoreProduct = (endPoint: string) => {
       return { previousProducts };
     },
 
-    onError: (error, newData, context) => {
+    onError: (error, _newData, context) => {
       queryClient.setQueriesData(
         { queryKey: ["products"] },
         context?.previousProducts

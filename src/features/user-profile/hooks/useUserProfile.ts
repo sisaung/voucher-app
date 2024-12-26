@@ -18,7 +18,7 @@ const useUserProfile = () => {
   const { control, handleSubmit } = useForm<UserEditProfileSchemaForm>({
     resolver: zodResolver(userEditProfileSchema),
   });
-  const [user, setUser] = useCookie("user");
+  const [_user, setUser] = useCookie("user");
   const [changeImageUrl, setChangeImageUrl] = useState<string | null>(null);
   const [imageFile, setImageFile] = useState<File>();
 

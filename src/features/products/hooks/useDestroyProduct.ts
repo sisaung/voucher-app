@@ -30,7 +30,7 @@ const useDestroyProduct = (endPoint: string) => {
 
       return { previousProducts };
     },
-    onError: (error, id, context) => {
+    onError: (_error, _id, context) => {
       queryClient.setQueriesData(
         { queryKey: ["product"] },
         context?.previousProducts
