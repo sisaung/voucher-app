@@ -16,7 +16,7 @@ const LoadingEmptyHandle = ({
       {isPending ? (
         loaderArr.map((_, index) => <ProductListsLoader key={index} />)
       ) : length === 0 ? (
-        <EmptyRow />
+        <EmptyRow name="products" path="/dashboard/products/create" />
       ) : (
         ""
       )}

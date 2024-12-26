@@ -16,7 +16,7 @@ const LoadingEmptyHandle = ({
       {isPending ? (
         loaderArr.map((_, index) => <VoucherListsLoader key={index} />)
       ) : length === 0 ? (
-        <EmptyRow />
+        <EmptyRow name="vouchers" path="/dashboard/sale" />
       ) : (
         ""
       )}
