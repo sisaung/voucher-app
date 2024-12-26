@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import useSingleShowVoucher from "../hooks/useSingleShowVoucher";
 import { formatDate } from "../../../utils/formatDateTime";
 import VoucherDetailTableItems from "./VoucherDetailTableItems";
-import VoucherDetailLoaderHandle from "./VoucherDetailLoaderHandle";
 import Button from "../../../components/ui/Button";
 import { LuDownload } from "react-icons/lu";
 import { useRef } from "react";
@@ -37,10 +36,10 @@ const VoucherInfo = () => {
   return (
     <div
       ref={voucherDownloadRef}
-      className="max-w-3xl my-5 bg-white rounded-xl shadow-sm p-4 sm:p-6"
+      className="max-w-3xl p-4 my-5 bg-white shadow-sm rounded-xl sm:p-6"
     >
       <div className="space-y-6">
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold">Voucher</h1>
 
           {!openInvoiceDownloadTypeModal && (
@@ -54,15 +53,15 @@ const VoucherInfo = () => {
           )}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div>
-            <label className="block text-sm text-gray-500 mb-1">
+            <label className="block mb-1 text-sm text-gray-500">
               Voucher Number
             </label>
             <span className="text-base font-medium">{voucher?.voucher_id}</span>
           </div>
           <div>
-            <label className="block text-sm text-gray-500 mb-1">
+            <label className="block mb-1 text-sm text-gray-500">
               Sale Date
             </label>
             <span className="text-base font-medium">
@@ -74,8 +73,8 @@ const VoucherInfo = () => {
         </div>
 
         <div>
-          <label className="block text-sm text-gray-500 mb-1">Bill To</label>
-          <h3 className="text-base font-medium mb-1">
+          <label className="block mb-1 text-sm text-gray-500">Bill To</label>
+          <h3 className="mb-1 text-base font-medium">
             {voucher?.customer_name}
           </h3>
         </div>
@@ -84,19 +83,19 @@ const VoucherInfo = () => {
           <table className="w-full min-w-[400px]">
             <thead>
               <tr className="border-b border-gray-200">
-                <th className="text-left py-3 px-4 text-sm font-normal text-gray-500">
+                <th className="px-4 py-3 text-sm font-normal text-left text-gray-500">
                   No
                 </th>
-                <th className="text-left  py-3 px-4 text-sm font-normal text-gray-500">
+                <th className="px-4 py-3 text-sm font-normal text-left text-gray-500">
                   Items
                 </th>
-                <th className="text-end py-3 px-4 text-sm font-normal text-gray-500">
+                <th className="px-4 py-3 text-sm font-normal text-gray-500 text-end">
                   QTY
                 </th>
-                <th className="text-end py-3 px-4 text-sm font-normal text-gray-500">
+                <th className="px-4 py-3 text-sm font-normal text-gray-500 text-end">
                   Price
                 </th>
-                <th className="text-end py-3 px-4 text-sm font-normal text-gray-500">
+                <th className="px-4 py-3 text-sm font-normal text-gray-500 text-end">
                   Cost
                 </th>
               </tr>
@@ -123,7 +122,7 @@ const VoucherInfo = () => {
             <span>Tax</span>
             <span>${voucher?.tax}</span>
           </div>
-          <div className="flex justify-between text-base font-semibold pt-3 border-t border-gray-200">
+          <div className="flex justify-between pt-3 text-base font-semibold border-t border-gray-200">
             <span>Total</span>
             <span>${voucher?.net_total}</span>
           </div>
