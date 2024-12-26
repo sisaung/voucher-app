@@ -48,7 +48,7 @@ const useStoreProduct = (endPoint: string) => {
       );
 
       toast.error(
-        error?.message ?? "An unknown error occurred,Please try again"
+        error?.message 
       );
     },
     onSettled: () => {

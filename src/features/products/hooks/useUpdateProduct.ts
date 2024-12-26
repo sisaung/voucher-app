@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateProduct } from "../../../services/productApi";
 import { Products } from "../../../types/product";
+import toast from "react-hot-toast";
 
 const useUpdateProduct = (endPoint: string, updateId: number) => {
   const queryClient = useQueryClient();
@@ -40,8 +41,9 @@ const useUpdateProduct = (endPoint: string, updateId: number) => {
       return { previousProducts };
     },
 
-    onError: (_error, _updatedProduct, context) => {
+    onError: (error, _updatedProduct, context) => {
       queryClient.setQueryData(["products"], context?.previousProducts);
+      toast.error(error?.message);
     },
 
     onSettled: () => {

@@ -14,7 +14,7 @@ const useLoginForm = () => {
     reset,
   } = useForm<LoginFormSchema>({ resolver: zodResolver(loginSchema) });
 
-  const { mutate, isPending, error } = useAuth("login");
+  const { mutate, isPending } = useAuth("login");
   const [_token, setToken] = useCookie("my_token");
   const [_user, setUser] = useCookie("user");
 
@@ -28,8 +28,8 @@ const useLoginForm = () => {
         toast.success("Welcome,Login Successfully");
         navigate("/dashboard");
       },
-      onError: () => {
-        toast.error(error?.message ?? "An unknown error occurred");
+      onError: (error) => {
+        toast.error(error?.message);
       },
     });
 

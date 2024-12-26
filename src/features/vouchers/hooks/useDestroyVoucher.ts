@@ -36,7 +36,7 @@ const useDestroyVoucher = (endPoint: string) => {
         { queryKey: ["vouchers"] },
         context?.previousData
       );
-      toast.error(error.message ?? "An unknown error occurred");
+      toast.error(error.message);
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["vouchers"] });

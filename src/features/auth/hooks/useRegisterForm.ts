@@ -10,7 +10,7 @@ const useRegisterForm = () => {
     resolver: zodResolver(registerSchema),
   });
 
-  const { mutate, isPending, error } = useAuth("register");
+  const { mutate, isPending } = useAuth("register");
   const navigate = useNavigate();
 
   const handleRegister = (data: RegisterFormSchema) => {
@@ -19,10 +19,8 @@ const useRegisterForm = () => {
         toast.success("Registration successfully");
         navigate("/");
       },
-      onError: () => {
-        toast.error(
-          error?.message ?? "An unknown error occurred registration failed "
-        );
+      onError: (error) => {
+        toast.error(error?.message);
       },
     });
 

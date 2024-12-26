@@ -29,8 +29,8 @@ const useUserUpdatePassword = () => {
         removeCookie("user");
         navigate("/");
       },
-      onError: () => {
-        toast.error("Please Provide correctly your old password");
+      onError: (error) => {
+        toast.error(error?.message);
       },
     });
     reset();

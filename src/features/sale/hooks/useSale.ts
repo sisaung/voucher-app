@@ -61,7 +61,7 @@ const useSale = () => {
         }
       },
       onError: (error) => {
-        toast.error(error?.message ?? "An unknown error occurred");
+        toast.error(error?.message);
       },
     });
     reset();

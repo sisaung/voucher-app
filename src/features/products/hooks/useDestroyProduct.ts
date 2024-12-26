@@ -30,13 +30,13 @@ const useDestroyProduct = (endPoint: string) => {
 
       return { previousProducts };
     },
-    onError: (_error, _id, context) => {
+    onError: (error, _id, context) => {
       queryClient.setQueriesData(
         { queryKey: ["product"] },
         context?.previousProducts
       );
 
-      toast.error("An unknown error occurred");
+      toast.error(error?.message);
     },
     onSuccess: () => {},
     onSettled: () => {
